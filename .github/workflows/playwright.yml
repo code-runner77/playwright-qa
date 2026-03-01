@@ -1,25 +1,28 @@
 name: Playwright QA
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  scrape:
+  qa:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
 
-      - name: Install deps
-        run: |
-          npm install
-          npx playwright install --with-deps
+    - name: Install dependencies
+      run: npm ci
 
-      - name: 23f1002415@ds.study.iitm.ac.in run scraper
-        run: |
-          node sumTables.js
+    - name: Install Playwright browsers
+      run: npx playwright install
+
+    - name: Run QA scraper (email: 23f1002415@ds.study.iitm.ac.in)
+      run: node sumTables.js
