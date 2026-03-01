@@ -1,0 +1,11 @@
+{
+  "name": "qa-playwright",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node sumTables.js"
+  },
+  "dependencies": {
+    "playwright": "^1.42.0"
+  }
+}
