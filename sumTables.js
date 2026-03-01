@@ -9,10 +9,10 @@ const seeds = [22,23,24,25,26,27,28,29,30,31];
 
   for (const seed of seeds) {
     const url = `https://tds-iitm.github.io/qa-reporting/seed-${seed}.html`;
-    await page.goto(url);
+    await page.goto(url, { waitUntil: 'networkidle' });
 
     const numbers = await page.$$eval("table td", tds =>
-      tds.map(td => parseFloat(td.innerText)).filter(n => !isNaN(n))
+      tds.map(td => parseFloat(td.innerText.replace(/,/g,''))).filter(n => !isNaN(n))
     );
 
     const sum = numbers.reduce((a,b)=>a+b,0);
