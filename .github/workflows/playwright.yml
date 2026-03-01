@@ -24,5 +24,5 @@ jobs:
     - name: Install Playwright browsers
       run: npx playwright install
 
-    - name: Run QA scraper (email: 23f1002415@ds.study.iitm.ac.in)
+    - name: "Run QA scraper (email: 23f1002415@ds.study.iitm.ac.in)"
       run: node sumTables.js
